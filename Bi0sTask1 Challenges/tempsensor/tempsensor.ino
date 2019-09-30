@@ -1,37 +1,20 @@
-int tempinput = A0;
-float val = 0.0;
-float voltageinmv ;
-float centigradetemp;
-int thresholdtemp = 36;
-int outputpin = 13 ;
-
 void setup()
 {
-  pinMode(A0, INPUT);
-  pinMode(13,OUTPUT);
+  pinMode(13, OUTPUT);//set pin13 as output
 }
 
 void loop()
 {
-  
-  val = analogRead(tempinput);
-  voltageinmv = val*(5000.0/1024.0);
-  centigradetemp = ((voltageinmv) - 500.0) / 10.0 ;
-  if (centigradetemp >= thresholdtemp)
+  digitalWrite(13, LOW);
+  // temperature sensor input
+  if (analogRead(A3) > 300) {
+    digitalWrite(13, HIGH);
+  } else 
   {
-    for (int i=5 ; i>0 ; i++)
-    {
-      digitalWrite(outputpin , HIGH);
-      delay(300);
-      digitalWrite(outputpin , LOW);
-      delay(300);
-    }
-   
+    digitalWrite(13, LOW);
   }
-  else 
-  {
-    digitalWrite(outputpin , LOW);
+  if (analogRead(A3) < 310) {
+    digitalWrite(13, LOW);
   }
-  
-    
+  delay(10); // Delay a little bit to improve simulation performance
 }

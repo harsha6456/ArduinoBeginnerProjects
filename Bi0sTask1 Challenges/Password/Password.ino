@@ -1,32 +1,23 @@
-String password ;
-String correctpassword = String("CAB#1729");
+#include <stdio.h>
 
 void setup() 
 {
   Serial.begin(9600);
+  String password= String ("whatisthematter");      
+
 }
 
-void loop() 
-{
-  if (Serial.available()>0)
-  {
-    if (check() == true)
-      Serial.print("Correct Password");
-    else
-      Serial.print("Incorrect Password");
-    while(1){}
-  }
-}
 
-bool check()
-{
-    password = Serial.readString();
-    if (password.equals(correctpassword))
-    { 
-      return true ;
-    }
-    else
+void loop() {
+  Serial.println("Enter the password");    
+  String password= String ("whatisthematter");      
+  String a= Serial.readString();
+  if (a!= password) 
     {
-      return false ; 
+      Serial.println("Password is wrong."); 
+    }
+  else 
+    {
+      Serial.println("Password is correct.");
     }
 }

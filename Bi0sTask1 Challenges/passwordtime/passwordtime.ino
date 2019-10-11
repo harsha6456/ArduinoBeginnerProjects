@@ -1,10 +1,10 @@
 
 #include <Timelib.h>
 #define TIME_HEADER "T"
-#define TIME_REQUEST "Enter No"
+#define TIME_REQUEST "Enter Number"
 
 String password ;
-String correctpassword = String("HALOYOLO");
+String correctpassword = String("password entered");
 
 void setup() 
 {
